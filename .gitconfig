@@ -1,0 +1,14 @@
+[user]
+  name = Chyld Medford
+  email = chyld.medford@gmail.com
+[credential]
+  helper = cache --timeout=3600
+[color]
+  ui = true
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+  prompt = false
+[diff]
+  tool = Kaleidoscope
+
