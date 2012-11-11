@@ -40,7 +40,7 @@ bakwht='\e[47m'   # White
 
 txtrst='\e[0m'    # Text Reset
 
-PATH=$PATH:/usr/local/heroku/bin:/usr/local/git:$HOME/.rvm/bin:$HOME/Documents/scripts
+PATH=/usr/local/heroku/bin:/usr/local/git/bin:$HOME/.rvm/bin:$HOME/Documents/scripts:$PATH
 
 HISTFILESIZE=9000
 export CLICOLOR=1
@@ -55,18 +55,14 @@ alias p='pry'
 alias h='history'
 alias chyld='ssh -i /Users/chyld/Documents/ssh-keys/chyldnet.pem ubuntu@54.243.202.224'
 
-custom_prompt()
+function branch
 {
-  line=':------------------------------------------------------------------------------:'
-  dir="$(pwd)"
-  dirs="$(pwd | ruby ~/Documents/scripts/dir.rb)"
-  files="$(pwd | ruby ~/Documents/scripts/file.rb)"
-  all="$(pwd | ruby ~/Documents/scripts/all.rb)"
-  time="$(date +"%H:%M:%S")"
-  ip="$(ifconfig en1 | ruby ~/Documents/scripts/ip.rb)"
-  branch="$(git status 2> /dev/null | ruby ~/Documents/scripts/branch.rb)"
-  printf "$txtpur{$txtylw$dir$txtpur + $txtylw$all$branch$txtpur} $txtwht:>$txtrst"
+  git status 2> /dev/null | ruby ~/Documents/scripts/branch.rb
 }
 
-PROMPT_COMMAND=custom_prompt
-export PS1=" "
+echo "----------------------------------------------------------------"
+echo "$(git --version)"
+echo "$(ruby -v)"
+echo "$(rails -v)"
+echo "----------------------------------------------------------------"
+PS1="$txtpur\w\$(branch)$txtwht ∴$txtrst "

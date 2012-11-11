@@ -5,10 +5,10 @@
   helper = cache --timeout=3600
 [color]
   ui = true
-[difftool "Kaleidoscope"]
-  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
-[difftool]
-  prompt = false
-[diff]
-  tool = Kaleidoscope
+[core]
+  editor = mate
+  excludesfile = /Users/chyld/.gitignore_global
+[alias]
+  st = status -sb -uall
+  lg = log --decorate --pretty=oneline --abbrev-commit --graph
 
