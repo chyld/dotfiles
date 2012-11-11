@@ -5,9 +5,9 @@ if !branches.empty?
   is_clean = second_line == "nothing to commit, working directory clean"
   if !branches.empty?
     if is_clean
-      puts " \e[0;32m-#{branch}"
+      puts " -#{branch}"
     else
-      puts " \e[0;31m+#{branch}"
+      puts " +#{branch}"
     end
   end
 end
